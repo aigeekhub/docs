@@ -1,47 +1,109 @@
 ---
-title: "Quickstart"
-description: "Begin with a guide on the fastest path to a successful outcome"
+title: "Get Started with Ai Studio in Minutes"
+sidebarTitle: "Quickstart"
+description: "Generate your first AI-designed UI component with Ai Studio. Set up your API key, enter a prompt, and export production-ready HTML in under 5 minutes."
 ---
 
-Describe how someone begins using your product. What is the first thing they need to do? Are there any prerequisites?
-
-A quickstart should take someone from zero to using your product. They'll get a quick win and a sense of what they can accomplish.
-
-## Prerequisites
-
-Before you begin, you must have:
-
-- Requirement one (for example, Node.js 18+, a free account, an API key)
-- Requirement two (for example, a compatible device, a compatible browser, a compatible operating system)
-
-## Get started
+Ai Studio is designed to get you from zero to a working, exportable UI in a single sitting. This guide walks you through every step — from cloning the repository to downloading your first generated component — in under five minutes. By the end you will have three distinct HTML/CSS UI variants on screen and a ZIP file ready to drop into your project.
 
 <Steps>
-  <Step title="Install">
-    Describe how to install your product or sign up.
+  <Step title="Prerequisites">
+    Before you begin, make sure you have the following:
+
+    - **Node.js v18 or later** — [download from nodejs.org](https://nodejs.org) if you do not have it.
+    - **A Gemini API key** — visit [Google AI Studio](https://aistudio.google.com) and create a free API key. You will need a Google account to sign in.
+
+    Verify your Node.js version by running:
 
     ```bash
-    npm install your-package
+    node --version
     ```
+
+    You should see `v18.x.x` or higher.
   </Step>
-  <Step title="Configure">
-    Describe any setup or configuration needed before first use.
+
+  <Step title="Clone and Install">
+    Clone the Ai Studio repository and install its dependencies:
 
     ```bash
-    your-cli init
+    git clone https://github.com/your-org/ai-studio.git
+    cd ai-studio
+    npm install
     ```
+
+    The install step pulls in all required packages including the Google Generative AI SDK and the Vite dev server.
   </Step>
-  <Step title="Run it">
-    Show the first thing a user does to see it working.
+
+  <Step title="Add Your API Key">
+    Create a `.env.local` file at the root of the project and add your Gemini API key:
 
     ```bash
-    your-cli start
+    # .env.local
+    GEMINI_API_KEY=your_gemini_api_key_here
     ```
+
+    Replace `your_gemini_api_key_here` with the key you copied from [Google AI Studio](https://aistudio.google.com). This file is listed in `.gitignore` by default — never commit it to version control.
+  </Step>
+
+  <Step title="Start the App">
+    Launch the Vite development server:
+
+    ```bash
+    npm run dev
+    ```
+
+    Open your browser and navigate to:
+
+    ```
+    http://localhost:5173
+    ```
+
+    You should see the **ARTIFACT_OS** interface load with the Ai Studio shell. If the app displays an API key error instead, double-check that `.env.local` exists and that the key is correct — see [Setup](/setup) for troubleshooting steps.
+  </Step>
+
+  <Step title="Generate Your First UI">
+    With the app running, trigger the prompt input:
+
+    1. Click the **COMMAND ACCESS** button to open the command panel.
+    2. Type a description of the UI you want, for example:
+
+       ```
+       Design a minimalist weather card with temperature, city name, and weather icon
+       ```
+
+    3. Click **EXECUTE** or press **Enter** to submit your prompt.
+
+    Ai Studio sends your prompt to Google Gemini and begins rendering three UI variants simultaneously. A progress indicator displays while the models work — generation typically completes in a few seconds.
+
+    <Tip>
+      When the command input is open, press **Tab** to auto-fill the animated placeholder suggestion. The placeholder rotates through curated example prompts — if one catches your eye, Tab accepts it instantly so you can submit without typing anything.
+    </Tip>
+  </Step>
+
+  <Step title="Explore Your Results">
+    Once generation completes, three UI variants appear side by side in the ARTIFACT_OS viewport. Each one is a fully self-contained HTML/CSS rendering of your prompt with its own distinct visual personality.
+
+    - **Click any variant** to focus it and see a larger preview alongside an AI-powered explanation of the design decisions behind it.
+    - **Iterate** by submitting a follow-up prompt — Ai Studio can use the focused variant as Base DNA so future generations inherit its visual identity. See [Iterating Designs](/guides/iterating-designs) for details.
+    - **Export** by clicking the download icon on a focused variant. You receive a ZIP archive containing the HTML source file, a high-resolution screenshot, and a README.
+
+    Your generated artifacts are automatically saved to the library. You can revisit them at any time from the **Saved Artifacts** panel. See [Organizing Your Work](/guides/organizing-work) to learn how to create folders and manage your collection.
   </Step>
 </Steps>
 
-<Tip>
-  Give people a way to get help. This could be a link to a support page, a chat with a customer support agent, or a forum for your product.
+## Next Steps
 
-  Example: Need help? Reach out to us at [support@yourcompany.com](mailto:support@yourcompany.com).
-</Tip>
+<CardGroup cols={2}>
+  <Card title="Detailed Setup" icon="gear" href="/setup">
+    Learn about advanced configuration options, environment variables, and production build commands.
+  </Card>
+  <Card title="Prompting Guide" icon="message-lines" href="/concepts/prompting">
+    Write better prompts to get more accurate, creative UI variants from Gemini.
+  </Card>
+  <Card title="Base DNA Iteration" icon="dna" href="/concepts/base-dna">
+    Understand how to lock in a design direction and evolve it across multiple generations.
+  </Card>
+  <Card title="Export & Library" icon="folder-open" href="/features/library">
+    Manage saved artifacts, organize them into folders, and re-export at any time.
+  </Card>
+</CardGroup>

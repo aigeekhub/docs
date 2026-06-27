@@ -1,0 +1,96 @@
+---
+title: "Revision Mode: Iterate on Designs with Base DNA"
+sidebarTitle: "Revision"
+description: "Use Revision Mode in Ai Studio to refine any artifact with natural language instructions. Three revision approaches give you control over how much changes."
+---
+
+Revision Mode lets you iterate on any artifact using plain language. Rather than re-generating from scratch, you describe the change you want and Ai Studio produces three new variants — each preserving a different percentage of the original design's "DNA." You stay in control of how conservative or transformative each revision round is.
+
+## Setting up for revision
+
+Before you can issue a revision prompt, you need to designate an artifact as the **Base DNA** — the source design that subsequent revisions will reference and build upon.
+
+<Steps>
+  <Step title="Focus an artifact">
+    Click on the artifact card you want to revise. It should be the design that represents your current best result.
+  </Step>
+  <Step title="Set it as Base DNA">
+    Click **DNA_v7** in the application header. The selected artifact is now locked in as the Base DNA. The prompt bar updates to Revision Mode — the input field label changes to reflect that you're now issuing a revision instruction, not a fresh generation prompt.
+  </Step>
+</Steps>
+
+Once Base DNA is set, all three generated artifacts in the next run will be rooted in that design. Learn more about what Base DNA means conceptually in [Base DNA](/concepts/base-dna).
+
+## Writing a revision prompt
+
+A revision prompt is a natural language instruction that describes what you want to change about the current Base DNA. You don't need to describe the entire UI — only what's different. Examples of effective revision prompts:
+
+- `"Make the primary button blue and increase its border radius"`
+- `"Add a left-side navigation sidebar with five menu items"`
+- `"Increase the base font size, tighten line height, and improve text contrast"`
+- `"Replace the table with a card grid layout"`
+- `"Add a dark mode toggle in the top-right corner"`
+
+Type your revision prompt in the prompt bar and press **Enter** or click **EXECUTE** to generate three revision variants.
+
+## The three revision approaches
+
+When you run a revision, Ai Studio generates three variants — each guided by a different revision approach that controls how much of the Base DNA is preserved. You select the approach before generating by clicking the approach pill in the revision bar.
+
+<CardGroup cols={3}>
+  <Card title="Refine" icon="sliders">
+    **95% DNA preserved**
+
+    The most conservative approach. Refine polishes without disrupting. It tightens spacing, sharpens typography, smooths micro-interactions, and applies minor color adjustments — all while keeping the layout, structure, and overall aesthetic virtually identical to the Base DNA.
+
+    *Best for:* Final polish passes, fixing small inconsistencies, production-readying a design.
+  </Card>
+  <Card title="Reimagine" icon="palette">
+    **70% DNA preserved**
+
+    A bolder restyle. Reimagine retains the component structure and content of the Base DNA but applies a fresh palette, new typographic choices, and updated materiality (shadows, gradients, surface treatments). The layout bones remain recognizable; the visual skin is substantially new.
+
+    *Best for:* Exploring alternative aesthetics on a proven layout, rebranding an interface.
+  </Card>
+  <Card title="Restructure" icon="layout-grid">
+    **50% DNA preserved**
+
+    The most transformative approach. Restructure reworks the information hierarchy and spatial organization of the Base DNA. Component types and core content are retained, but their arrangement, grouping, and visual weight can shift significantly.
+
+    *Best for:* UX improvements, layout experiments, adapting a design for a different screen context.
+  </Card>
+</CardGroup>
+
+<Note>
+  The DNA percentage is a guide for Gemini's generation constraints, not a hard technical measurement. In practice, Refine changes will feel subtle while Restructure changes can feel like a meaningfully different design — even if the underlying content is the same.
+</Note>
+
+## Applying a result
+
+After your three revision variants generate:
+
+<Steps>
+  <Step title="Review all three variants">
+    Compare the three cards. Each reflects the same revision prompt interpreted through a slightly different lens of the selected approach. Click any card to view it full-size.
+  </Step>
+  <Step title="Set your favorite as the new Base DNA">
+    Click **DNA_v7** on the variant you prefer. This promotes it to the new Base DNA and resets the revision cycle. You can now issue another revision prompt from this improved starting point.
+  </Step>
+  <Step title="Export when satisfied">
+    When you've reached a result you're happy with, click **Download** to export the artifact as a ZIP, or click **Copy** to grab the HTML. See [Export](/features/export) for details.
+  </Step>
+</Steps>
+
+## Undoing a revision
+
+If a revision run moves in the wrong direction, click the **UNDO / BACK** button in the header. This restores the previous Base DNA state, reverting the prompt bar to the last confirmed Base DNA artifact. Your session history retains all generated variants — you're not deleting anything, just rolling back the active Base DNA pointer.
+
+<Tip>
+  Chain revision rounds strategically for the best outcomes. A productive pattern is:
+
+  1. **Refine** first — tighten spacing, fix contrast, clean up micro-details.
+  2. **Reimagine** second — once the structure is solid, explore a fresh visual direction on top of it.
+  3. **Export** the final result once you're satisfied.
+
+  Each approach builds on the last, so you're always iterating from a stronger baseline. See [Iterating on Designs](/guides/iterating-designs) for a complete walkthrough.
+</Tip>

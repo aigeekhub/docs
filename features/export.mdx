@@ -1,0 +1,98 @@
+---
+title: "Export Your Designs: Download HTML, Code, and Assets"
+sidebarTitle: "Export"
+description: "Export any Ai Studio artifact as a ZIP package containing production-ready HTML, a screenshot, implementation README, and prompt metadata."
+---
+
+Every artifact you create in Ai Studio is a real, deployable HTML document. When you're ready to take a design out of the browser and into the world, Ai Studio gives you multiple export paths — a full ZIP package, a clipboard copy of the raw HTML, or direct inspection of the source code in the editor panel.
+
+## ZIP export
+
+The primary export option packages everything you need to hand off or implement a design. To export:
+
+<Steps>
+  <Step title="Focus the artifact">
+    Click the artifact card you want to export to bring it into focus.
+  </Step>
+  <Step title="Click Download">
+    Click the **Download** button in the artifact controls or the header. Ai Studio compiles the export package and downloads a ZIP file to your machine.
+  </Step>
+</Steps>
+
+The ZIP contains four files:
+
+<AccordionGroup>
+  <Accordion title="index.html — the complete interface" icon="file-code">
+    A full `<!DOCTYPE html>` document containing the entire UI. It includes:
+    - The **Inter** font loaded via Google Fonts
+    - All CSS in a `<style>` block inside `<head>` — no separate stylesheet needed
+    - All interactivity as inline `<script>` tags
+    - No external runtime dependencies
+
+    Open it directly in any browser and it works immediately.
+  </Accordion>
+  <Accordion title="screenshot.png — high-resolution preview" icon="image">
+    A **1200×800 pixel** screenshot of the artifact captured at **1.5× device pixel ratio** using `html2canvas`. The resulting image is crisp and suitable for presentations, design documentation, portfolio entries, or sharing in a project brief.
+  </Accordion>
+  <Accordion title="README.md — implementation guide" icon="book-open">
+    A generated implementation guide that covers:
+    - **Responsive design** — recommended breakpoints and how to adapt the layout for mobile
+    - **Accessibility** — ARIA considerations, color contrast notes, keyboard navigation
+    - **Framework integration** — guidance on converting the HTML/CSS into React, Vue, or Angular components
+
+    The README is written specifically for your artifact's structure, not a generic template.
+  </Accordion>
+  <Accordion title="prompt.json — generation metadata" icon="braces">
+    A JSON file containing:
+    - The original generation prompt
+    - The style name Gemini assigned to this variant (e.g., `"Crystalline Data Lattice"`)
+    - The generation timestamp
+
+    This metadata is useful for reproducing or referencing the generation later, and for documentation purposes in larger design systems.
+  </Accordion>
+</AccordionGroup>
+
+## Copy to clipboard
+
+If you only need the HTML — no screenshot, no README — use the **Copy** option:
+
+<Steps>
+  <Step title="Focus the artifact">
+    Click the artifact card you want to copy.
+  </Step>
+  <Step title="Open the Source panel">
+    Click **SOURCE** in the header, or click the code icon on the artifact card. The Source panel opens showing the full HTML document.
+  </Step>
+  <Step title="Copy">
+    Click **Copy** in the Source panel header. The entire HTML document is copied to your clipboard. A checkmark icon briefly replaces the copy icon to confirm the action succeeded.
+  </Step>
+</Steps>
+
+## Viewing source code
+
+You can inspect the raw HTML of any artifact at any time without exporting it:
+
+- Focus an artifact and click **SOURCE** in the header, **or**
+- Click the code icon (`</>`) on the artifact card directly
+
+The Source panel opens alongside the live preview. It shows the complete, syntax-highlighted HTML — including all inline CSS and JavaScript. You can scroll through it, select portions to copy manually, or use the full **Copy** button to grab everything at once.
+
+This is especially useful for:
+- Understanding how a particular layout or effect was implemented
+- Extracting specific CSS snippets
+- Debugging unexpected rendering behavior
+
+## Using exported HTML
+
+The exported `index.html` is designed to be immediately usable:
+
+- **Open in a browser** — double-click the file or drag it into any browser tab. No server required.
+- **Deploy as a static page** — drop it into any static hosting service (Netlify, Vercel, GitHub Pages) without modification.
+- **Integrate into a project** — copy the CSS from the `<style>` block into your own stylesheet; adapt the HTML structure into your templating language or component framework.
+- **No build step required** — there are no npm dependencies, no bundlers, no config files needed.
+
+All styles are scoped inside a single `<style>` tag in `<head>`, so they won't leak into surrounding page styles if you embed the markup into a larger document.
+
+<Tip>
+  The **README.md** inside your ZIP export is your fastest path to turning a generated UI into a working component. It contains artifact-specific guidance on converting the HTML into React, Vue, or Angular — including component boundary suggestions, prop mapping, and state management notes. Open it first before starting any integration work.
+</Tip>

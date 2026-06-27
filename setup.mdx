@@ -1,0 +1,118 @@
+---
+title: "Configure Ai Studio: API Keys and Local Setup"
+sidebarTitle: "Setup"
+description: "Configure your Gemini API key and local environment to run Ai Studio. Covers prerequisites, environment variables, and development server options."
+---
+
+Ai Studio runs entirely in your local browser via a Vite development server. The only external dependency is a Google Gemini API key — the app uses it to call the Gemini models that power UI generation. This guide walks you through every configuration step so you can get the server running and start generating interfaces.
+
+## Prerequisites
+
+Make sure your machine meets the following requirements before you proceed:
+
+| Requirement | Minimum Version | Notes |
+|---|---|---|
+| **Node.js** | v18.0.0 | Required by Vite and the Google Generative AI SDK |
+| **npm** | v9.0.0 | Bundled with Node.js v18+ |
+| **Google account** | — | Required to access Google AI Studio and create an API key |
+
+Check your installed versions:
+
+```bash
+node --version
+npm --version
+```
+
+If Node.js is not installed or is out of date, download the latest LTS release from [nodejs.org](https://nodejs.org).
+
+## Getting a Gemini API Key
+
+Ai Studio uses Google Gemini models for UI generation. You need a free API key to authenticate requests.
+
+1. Open [Google AI Studio API Keys](https://aistudio.google.com/app/apikey) in your browser.
+2. Sign in with your Google account.
+3. Click **Create API key** and select or create a Google Cloud project.
+4. Copy the generated key — you will add it to your environment in the next step.
+
+<Note>
+  Ai Studio uses both the `gemini-2.0-flash-preview` and `gemini-2.5-flash` models depending on the generation task. Both models are available on the free tier of Google AI Studio, so no billing setup is required to get started.
+</Note>
+
+## Environment Setup
+
+Ai Studio reads your API key from a `.env.local` file at the root of the project. This file is excluded from version control by `.gitignore` so your key stays private.
+
+Create the file and add your key:
+
+```bash
+# .env.local
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+Replace `your_gemini_api_key_here` with the key you copied from Google AI Studio.
+
+<Warning>
+  Never commit `.env.local` to version control. If you accidentally expose your API key in a public repository, rotate it immediately in [Google AI Studio](https://aistudio.google.com/app/apikey) and update your local file with the new value.
+</Warning>
+
+## Installation and Running the App
+
+### Install Dependencies
+
+<CodeGroup>
+```bash npm
+npm install
+```
+</CodeGroup>
+
+This installs all required packages defined in `package.json`, including Vite, React, and the `@google/generative-ai` SDK.
+
+### Start the Development Server
+
+```bash
+npm run dev
+```
+
+Vite starts a local server and prints the URL to your terminal — by default `http://localhost:5173`. Open that address in your browser to launch the **ARTIFACT_OS** interface.
+
+The development server supports hot module replacement (HMR), so any changes you make to the source files reflect in the browser immediately without a full reload.
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+Vite compiles and bundles the app into the `dist/` directory. You can serve the contents of `dist/` with any static file host or CDN. Remember to set the `GEMINI_API_KEY` environment variable in your hosting environment — it is **not** baked into the production build.
+
+## Missing or Invalid API Key
+
+If `GEMINI_API_KEY` is missing from `.env.local` or the value is incorrect, Ai Studio will display an error notification when you attempt to generate a UI. The app will not crash, but generation requests will fail until you provide a valid key.
+
+Common causes and fixes:
+
+- **Key not set** — Make sure `.env.local` exists at the project root and contains `GEMINI_API_KEY=...` with no extra spaces or quotes around the value.
+- **Typo in key** — Copy the key directly from the [Google AI Studio dashboard](https://aistudio.google.com/app/apikey) rather than typing it manually.
+- **Key revoked or expired** — Generate a new key from the dashboard and update `.env.local`.
+- **Wrong variable name** — The app expects exactly `GEMINI_API_KEY`. Any other name will be ignored.
+
+After correcting the key, stop the dev server with `Ctrl + C` and restart it with `npm run dev` so Vite reloads the environment variables.
+
+For more help with API-related errors, see [API Error Troubleshooting](/troubleshooting/api-errors).
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Already configured? Follow the Quickstart to generate your first UI variant in minutes.
+  </Card>
+  <Card title="Prompting Concepts" icon="message-lines" href="/concepts/prompting">
+    Learn how to write effective prompts and get the most out of each generation.
+  </Card>
+  <Card title="Common Issues" icon="triangle-exclamation" href="/troubleshooting/common-issues">
+    Solutions to the most frequently encountered setup and runtime problems.
+  </Card>
+  <Card title="API Errors" icon="circle-xmark" href="/troubleshooting/api-errors">
+    Diagnose and fix Gemini API authentication and quota errors.
+  </Card>
+</CardGroup>

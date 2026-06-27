@@ -1,0 +1,100 @@
+---
+title: "Style Variations: Restyle Any UI in 25+ Design Aesthetics"
+sidebarTitle: "Variations"
+description: "Generate three visual reskins of any artifact using Ai Studio's variation engine. Choose from 25+ style presets like Glassmorphism, Brutalist, or Cyberpunk."
+---
+
+The Variations engine lets you take any artifact and instantly see it rendered in a completely different visual aesthetic — without changing a single word of its content or a single unit of its layout logic. Choose from more than 25 style presets, pick a theme, and Ai Studio produces three distinct reskins using Google Gemini's structured output capabilities.
+
+## What are variations?
+
+Variations are style-preserving reskins. When you generate a variation, the engine:
+
+1. **Reads the structure and content** of your focused artifact — its components, copy, hierarchy, and interactive logic.
+2. **Applies a new visual aesthetic** defined by your chosen style preset and theme — new color palettes, typography, surface treatments, shadows, borders, and motion cues.
+3. **Returns three conceptual variations** of that aesthetic, each a slightly different interpretation, so you still get meaningful choices.
+
+The original artifact is never modified. Variations produce new artifacts that you can apply, discard, or iterate on independently.
+
+## How to generate variations
+
+<Steps>
+  <Step title="Focus an artifact">
+    Click on any artifact card to bring it into focus. The header controls will update to reflect the focused artifact's available actions.
+  </Step>
+  <Step title="Open the variations panel">
+    Click **NEURAL VARIATIONS** in the header. The Variations panel slides open alongside the artifact.
+  </Step>
+  <Step title="Choose a style preset">
+    Select one of the 25+ style presets from the style picker. Hover over any style to see a brief description of its aesthetic character.
+  </Step>
+  <Step title="Choose a theme">
+    Select **Dark**, **Light**, or **Custom** from the theme selector. Custom lets you describe specific color and tone requirements in free text.
+  </Step>
+  <Step title="Generate">
+    Click **Generate**. Ai Studio calls Gemini with structured JSON output constraints to produce three variation artifacts in parallel. Each one streams into its own card in the variations panel.
+  </Step>
+</Steps>
+
+## Available styles
+
+Ai Studio ships with 25 named style presets plus a free-form Custom option:
+
+| Style | Character |
+|---|---|
+| **Cyberpunk** | Neon glows, dark backgrounds, grid lines, high-contrast accents |
+| **Minimalist** | White space, single accent color, sparse typography |
+| **Neumorphic** | Soft extruded surfaces, inset shadows, monochromatic palettes |
+| **Glassmorphism** | Frosted glass panels, blur effects, translucent overlays |
+| **Retro / Synthwave** | 80s grid horizons, magenta/cyan gradients, VHS aesthetics |
+| **Brutalist** | Raw layouts, heavy borders, stark contrast, unapologetic structure |
+| **Bauhaus** | Primary colors, geometric shapes, functional form |
+| **Swiss Modern** | Grid-based, clean serif/sans combinations, editorial precision |
+| **Skeuomorphic** | Realistic textures, depth, shadows that mimic physical objects |
+| **Vaporwave** | Pastel purples and pinks, retro 3D elements, nostalgic surrealism |
+| **Solarized** | Ethan Schoonover's precision color palette, warm amber base |
+| **Nord** | Arctic blue-grey palette, muted and calm, Scandinavian cool |
+| **Dracula** | Deep purple darks, soft pastels for syntax, high readability |
+| **Material Design** | Google's card-based system, elevation shadows, bold primary colors |
+| **Flat Design** | No gradients, no shadows, pure solid colors and clean shapes |
+| **8-bit / Pixel Art** | Pixelated rendering, limited palettes, classic game aesthetics |
+| **Art Deco** | Gold and black, geometric symmetry, ornate typography |
+| **Steampunk** | Brass tones, mechanical textures, Victorian industrial motifs |
+| **Bio-organic** | Flowing curves, earthy palettes, nature-inspired surfaces |
+| **Holographic** | Iridescent gradients, prismatic light effects, futuristic shimmer |
+| **Cyber-Y2K** | Chrome text, pixel fonts, early-internet nostalgia meets futurism |
+| **Acid Graphic** | Clashing neons, warped type, psychedelic high-energy layouts |
+| **Corporate Memphis** | Flat illustration style, friendly rounded shapes, approachable palettes |
+| **Claymorphism** | 3D clay-like components, soft shadows, inflated rounded forms |
+| **Aurora** | Shifting northern-lights gradients, dark base, luminous color blooms |
+| **Custom** | Describe any aesthetic in free text; Gemini interprets your intent |
+
+## Themes
+
+Themes set the broad tonal context that the style preset operates within:
+
+- **Dark** — deep backgrounds, light foreground text; ideal for high-contrast and atmospheric styles like Cyberpunk or Dracula.
+- **Light** — bright backgrounds, dark foreground text; works well with Minimalist, Swiss Modern, and Corporate Memphis.
+- **Custom** — enter a free-text description of the tonal environment you want. For example: *"Warm sunset tones, amber background, dark brown text."*
+
+The theme is layered on top of the style preset, so **Glassmorphism + Dark** and **Glassmorphism + Light** will produce distinctly different outputs.
+
+## Applying a variation
+
+Once your three variation cards have rendered:
+
+<Steps>
+  <Step title="Review the three variations">
+    Scroll through the variation cards. Click any card to preview it full-size in an interactive iframe.
+  </Step>
+  <Step title="Apply your preferred variation">
+    Click **APPLY DNA** on the card you want to keep. This replaces the currently focused artifact with the selected variation, creating a new session state. The original artifact is preserved in your session history.
+  </Step>
+  <Step title="Continue iterating">
+    Your applied variation is now a first-class artifact. You can generate further variations from it, enter [Revision Mode](/features/revision), or [export it](/features/export).
+  </Step>
+</Steps>
+
+<Note>
+  Variations preserve the original artifact's **business logic and content** — every button, form field, data point, and label carries over unchanged. Only the visual presentation layer is reskinned. If you need to change structure or copy, use [Revision Mode](/features/revision) after applying a variation.
+</Note>

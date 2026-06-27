@@ -1,0 +1,132 @@
+---
+title: "Writing Effective Prompts for UI Generation"
+sidebarTitle: "Prompting"
+description: "Learn how to write prompts that produce stunning UI designs in Ai Studio. Covers component types, style directions, color hints, and prompt structure."
+---
+
+The quality of your prompt is the single biggest lever you have over the output. Ai Studio feeds your words directly to Google Gemini, which uses them to invent three distinct visual interpretations — so a vague prompt produces generic results while a specific, well-structured prompt produces designs that feel intentional, polished, and ready to build from.
+
+---
+
+## What to include in your prompt
+
+A strong UI generation prompt answers four questions at once: *What is it? What does it look like? What colors does it use? What does it do?* You don't need to answer all four every time, but covering more of them gives Gemini more creative signal to work with.
+
+### Component type
+
+Start by naming the UI pattern you want. Concrete component names anchor the generation and prevent Gemini from guessing the context.
+
+| Good examples | Why they work |
+|---|---|
+| `weather card` | Immediately scopes size, data, and layout expectations |
+| `login form` | Implies email/password fields, a submit button, and minimal chrome |
+| `pricing table` | Implies columns, tiers, feature lists, and a CTA per tier |
+| `stock portfolio dashboard` | Implies data density, charts, and a financial visual language |
+
+### Visual style
+
+Adding a style adjective is the fastest way to shift the aesthetic across all three variants.
+
+- **Minimalist** — lots of whitespace, thin typography, restrained color
+- **Glassmorphic** — frosted translucent panels, blurred backgrounds, soft shadows
+- **Brutalist** — raw borders, high contrast, bold monospace type, zero decoration
+- **Retro / Y2K** — gradients, pixel hints, saturated colors, nostalgic UI patterns
+- **Neumorphic** — soft-shadow extruded surfaces, monochromatic depth
+- **Futuristic / Sci-fi** — dark backgrounds, neon accents, HUD-style data overlays
+
+### Color palette hints
+
+You don't need to specify hex codes. Describe the feeling of the palette instead.
+
+- `earthy tones` → warm terracotta, olive, sand
+- `neon accents` → bright cyan, electric purple on dark backgrounds
+- `monochrome` → black, white, and greys only
+- `calm, trustworthy` → navy, teal, and soft whites
+- `vibrant and playful` → saturated primaries with rounded UI shapes
+
+### Functional elements
+
+Describe what the component *does* or what it contains to inform layout decisions.
+
+- `with a submit button and field validation hints`
+- `showing live price data with percentage change indicators`
+- `with a collapsible sidebar and breadcrumb trail`
+- `including a profile avatar, notification bell, and search bar`
+
+---
+
+## Example prompts
+
+These are drawn directly from the built-in placeholder library that cycles in the prompt input. Use them as templates or starting points.
+
+<CardGroup cols={2}>
+  <Card title="Minimalist weather card" icon="cloud-sun">
+    `Design a minimalist weather card` — clean layout, temperature at a glance, icon-driven forecast strip.
+  </Card>
+  <Card title="Futuristic login form" icon="lock">
+    `Create a futuristic login form` — dark background, glowing input borders, sci-fi typography.
+  </Card>
+  <Card title="Stock portfolio dashboard" icon="chart-line">
+    `Build a stock portfolio dashboard` — data-dense layout with charts, tickers, and P&L indicators.
+  </Card>
+  <Card title="Smart home control panel" icon="house-signal">
+    `A glassmorphic smart home control panel with dynamic lighting effects` — frosted cards, ambient glow, room-by-room controls.
+  </Card>
+  <Card title="Fintech analytics dashboard" icon="coins">
+    `A clean fintech analytics dashboard with data visualizations and a calm, trustworthy color palette` — navy/teal palette, KPI cards, line charts.
+  </Card>
+  <Card title="E-commerce product page" icon="bag-shopping">
+    `An e-commerce product page with a bold hero image, size selector, and add-to-cart button` — conversion-focused layout, strong visual hierarchy.
+  </Card>
+</CardGroup>
+
+---
+
+## Using placeholder suggestions
+
+When the prompt input is empty, Ai Studio cycles through a curated set of example prompts every **3 seconds**. These are real, tested prompts that produce strong results across the full range of component types and styles.
+
+<Steps>
+  <Step title="Watch the placeholder cycle">
+    Let the animated placeholder rotate until you see a prompt that interests you or sparks an idea.
+  </Step>
+  <Step title="Press Tab to accept">
+    Press the **Tab** key while the input is empty and focused. The current placeholder text is instantly copied into the input field.
+  </Step>
+  <Step title="Edit or submit">
+    You can submit the placeholder prompt as-is, or modify it — swap out the style, add color hints, or append functional requirements — before pressing **Enter**.
+  </Step>
+</Steps>
+
+<Tip>
+  Ai Studio generates a fresh set of placeholder prompts each time you load the app, so you'll see new suggestions on every visit. If nothing in the current cycle resonates, refresh and try again.
+</Tip>
+
+---
+
+## Revision prompts
+
+Once you've set a [Base DNA](/concepts/base-dna) — pinning one of your generated artifacts as the reference design — the prompt input switches into **revision mode**. In revision mode, your prompt describes *changes to make* rather than a design to generate from scratch.
+
+Revision prompts work best when they are directive and specific about a single concern at a time:
+
+| Vague revision | Specific revision |
+|---|---|
+| `Make it better` | `Increase the font size and add more breathing room between sections` |
+| `Change the colors` | `Shift the palette to a dark navy background with amber accent buttons` |
+| `Add some stuff` | `Add a sidebar with navigation links for Home, Reports, and Settings` |
+| `Make it more modern` | `Replace the flat buttons with pill-shaped ones and add a subtle drop shadow` |
+
+You can also direct a revision at the structure rather than the style:
+
+- `Reorganize the layout so the CTA button appears above the fold`
+- `Split the form into two columns`
+- `Add a sticky header that collapses on scroll`
+
+See [Iterating on Designs](/guides/iterating-designs) for a full walkthrough of the revision workflow.
+
+---
+
+<Tip>
+  Be specific about **materiality** for the most visually distinctive results. Compare `glassmorphic` (vague) to `frosted glass panels with 40% opacity, a 1px white border, and a soft inset shadow` (concrete). The more you describe the physical qualities of the UI — surface texture, border weight, shadow depth — the more differentiated your three variants will be.
+</Tip>

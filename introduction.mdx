@@ -1,0 +1,41 @@
+---
+title: "Ai Studio: AI-Powered UI Design from Text Prompts"
+sidebarTitle: "Introduction"
+description: "Ai Studio generates three distinct, export-ready HTML UI designs from a single text prompt using Google Gemini. No design skills required."
+---
+
+Ai Studio (also called **UI/UX FLASH BY BOO**) is a browser-based AI design tool that turns plain-language descriptions into polished, production-ready user interfaces — instantly. Instead of opening a design tool, sketching wireframes, and writing CSS by hand, you type what you want and Ai Studio generates three fully-formed, high-fidelity HTML/CSS UI variants simultaneously using the power of Google Gemini. Whether you are a developer who needs a quick component or a designer exploring visual directions, Ai Studio removes the blank-canvas problem and gets you to tangible results in seconds.
+
+## Key Capabilities
+
+<CardGroup cols={2}>
+  <Card title="Generate UIs from Text" icon="wand-magic-sparkles" href="/features/generation">
+    Describe any interface in plain English and receive three distinct, high-fidelity HTML/CSS variants side by side. Each variant interprets your prompt independently, giving you real creative breadth from a single submission.
+  </Card>
+  <Card title="Iterate with Base DNA" icon="dna" href="/features/revision">
+    Lock in the design elements you love using the Base DNA iteration system. Subsequent generations inherit the visual identity of your chosen variant while exploring fresh layout and styling directions.
+  </Card>
+  <Card title="Export Production-Ready Code" icon="file-export" href="/features/export">
+    Download a ZIP archive containing the HTML source, a high-resolution screenshot, and a README for every artifact you create. Everything you need to drop a component straight into your project.
+  </Card>
+  <Card title="Save and Organize Work" icon="folder-open" href="/features/library">
+    Store generated artifacts in a searchable library with custom folders. Revisit and re-export any past result at any time, and browse up to 50 sessions of generation history.
+  </Card>
+</CardGroup>
+
+## How It Works
+
+The Ai Studio workflow is intentionally linear so you can move from idea to exportable code without detours:
+
+1. **Prompt** — Open the command input with the **COMMAND ACCESS** button and describe the UI you need. A single sentence is enough to start.
+2. **Three variants** — Ai Studio calls Google Gemini and renders three independent HTML/CSS interpretations of your prompt in parallel, each with its own visual personality drawn from 25+ design style variations.
+3. **Pick one** — Click the variant that best matches your vision to bring it into focus. Review the rendered output and read the AI-powered explanation of its design decisions.
+4. **Refine or export** — Either iterate using Base DNA to evolve the design further, or export immediately as a ZIP containing the HTML, a screenshot, and a README.
+
+## The ARTIFACT_OS Interface
+
+Ai Studio presents itself through a futuristic **ARTIFACT_OS** interface — a dark, terminal-inspired shell that reinforces the sense that you are operating a generative design system rather than a conventional web app. The aesthetic is deliberate: command-line vocabulary (`EXECUTE`, `COMMAND ACCESS`), scanline overlays, and monospaced typography keep your attention on the output rather than the tool itself. Sound Lab audio feedback adds another dimension to the experience. Do not let the interface intimidate you — the underlying interaction model is as simple as typing a sentence and pressing a button.
+
+<Note>
+  Ai Studio requires a valid Google Gemini API key to generate UI variants. Before you launch the app, make sure you have set the `GEMINI_API_KEY` environment variable in a `.env.local` file at the root of the project. See the [Setup guide](/setup) for step-by-step instructions on obtaining and configuring your key.
+</Note>

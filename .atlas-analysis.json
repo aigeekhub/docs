@@ -1,0 +1,87 @@
+{
+  "projectType": "saas",
+  "projectName": "Ai Studio — UI/UX Flash",
+  "projectDescription": "A browser-based AI design tool that transforms text prompts into three simultaneous high-fidelity UI variants using Google Gemini, with built-in iteration, export, and library features.",
+  "theme": "luma",
+  "primaryColor": "#6acfdf",
+  "lightColor": "#e8f3f4",
+  "darkColor": "#0e0e0e",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "setup"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "concepts/prompting",
+              "concepts/artifacts",
+              "concepts/base-dna",
+              "concepts/sessions"
+            ]
+          },
+          {
+            "group": "Features",
+            "pages": [
+              "features/generation",
+              "features/variations",
+              "features/revision",
+              "features/export",
+              "features/library"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/first-ui",
+              "guides/iterating-designs",
+              "guides/organizing-work"
+            ]
+          },
+          {
+            "group": "Troubleshooting",
+            "pages": [
+              "troubleshooting/common-issues",
+              "troubleshooting/api-errors"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Generate 3 distinct UI design variants simultaneously from a single text prompt",
+    "Base DNA system — pin any artifact as a reference for iterative refinement",
+    "Style variations with 25+ design aesthetics (Cyberpunk, Glassmorphism, Brutalist, etc.)",
+    "Three revision approaches per iteration: Refine, Reimagine, and Restructure",
+    "One-click export as a ZIP package containing HTML, screenshot, README, and prompt metadata",
+    "Copy generated HTML code to clipboard with a single click",
+    "Saved artifacts library with folder organization and favorites",
+    "Full session history with up to 50 past generation runs",
+    "AI-powered UI explanation in plain English with actionable next steps",
+    "Animated futuristic interface with starfield background, boot sequence, and sound effects",
+    "Dynamic AI-generated prompt suggestions to spark creativity",
+    "Tab completion for quick prompt entry using current placeholder"
+  ],
+  "publicApiSurface": [
+    "Text prompt → 3 AI-generated HTML UI artifacts (via Gemini gemini-3-flash-preview)",
+    "Style variation generation (25 preset styles + custom) via generateContentStream",
+    "Revision session: Refine / Reimagine / Restructure approaches",
+    "Export ZIP: index.html, README.md, prompt.json, screenshot.png",
+    "Copy to clipboard (navigator.clipboard + execCommand fallback)",
+    "LocalStorage persistence: alchemy_history, alchemy_artifacts, alchemy_folders",
+    "Base DNA: setBase / clearBase / undoBase (useBaseDNA hook)",
+    "Sound effects: playTechSound(type), playTacticalFrequency(freq, duration, type, sweep)",
+    "WAV sound download via OfflineAudioContext",
+    "Artifact retry: handleRetryArtifact(sessionId, artifactId)",
+    "Explain UI: AI-powered UX analysis with what_this_is, why_it_feels, what_to_try_next"
+  ]
+}

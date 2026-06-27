@@ -1,0 +1,96 @@
+---
+title: "Library: Save, Organize, and Reuse Your Best Designs"
+sidebarTitle: "Library"
+description: "The Ai Studio Library lets you save artifacts to named folders, mark favorites, and reload any saved design into a new session for further iteration."
+---
+
+The Library is your personal archive inside Ai Studio — a persistent store of every artifact you've chosen to keep. Save your best designs, organize them into color-coded folders, mark favorites, and reopen any saved artifact at any time for further iteration or export.
+
+## Saving an artifact
+
+You can save any artifact from an active session to your Library with a single action:
+
+<Steps>
+  <Step title="Focus the artifact">
+    Click the artifact card you want to save. It should be highlighted as the active artifact.
+  </Step>
+  <Step title="Click VAULT_PUSH">
+    Click **VAULT_PUSH** in the application header. A folder picker popover appears.
+  </Step>
+  <Step title="Choose a destination folder">
+    Select an existing folder from the list, or choose **Uncategorized** to save without sorting. The artifact is immediately written to your Library.
+  </Step>
+</Steps>
+
+Artifacts are saved with their full HTML, style name, original prompt, and a thumbnail screenshot so you can identify them at a glance.
+
+## Opening the Library
+
+There are two ways to open the Library view:
+
+- Click **NAV ACCESS** in the header, then select **VAULT_PUSH** from the navigation menu.
+- Click **VAULT_PUSH** while an artifact is focused — if no folder picker appears, the Library opens directly.
+
+The Library opens in **Vitrified Storage** view: a grid of artifact cards showing thumbnails, style names, and folder assignments. Use the search bar at the top to filter by prompt text or style name.
+
+## Organizing with folders
+
+Folders let you group related artifacts by project, client, style direction, or any other taxonomy that makes sense for your workflow.
+
+<Steps>
+  <Step title="Create a new folder">
+    Inside the Library, click **NEW_DIR**. A dialog prompts you to name the folder. Enter a name and confirm.
+  </Step>
+  <Step title="Choose a folder color">
+    Select one of the **8 available color labels** for the folder. Colors appear as accent dots next to the folder name in the sidebar, making it easy to scan at a glance.
+  </Step>
+  <Step title="Filter by folder">
+    Click any folder name in the Library's left sidebar to filter the artifact grid to only show that folder's contents. Click **All** to return to the full Library view.
+  </Step>
+</Steps>
+
+<Note>
+  You can reassign an artifact to a different folder at any time by opening its context menu inside the Library and selecting **Move to folder**.
+</Note>
+
+## Reopening a saved artifact
+
+Every artifact in the Library can be reopened in a live session:
+
+<Steps>
+  <Step title="Find the artifact">
+    Open the Library and browse or search for the artifact you want to revisit.
+  </Step>
+  <Step title="Click the artifact card">
+    Click the card. Ai Studio loads the artifact into a new session — the full HTML is restored and rendered in a live interactive iframe preview.
+  </Step>
+  <Step title="Continue working">
+    From here you can set the artifact as [Base DNA](/concepts/base-dna) for a revision run, generate [Style Variations](/features/variations), or [export it](/features/export) as a ZIP.
+  </Step>
+</Steps>
+
+This makes the Library a living design system — not just a graveyard for old exports, but an active pool of reusable starting points.
+
+## Favorites
+
+Any artifact — whether in your active session or inside the Library — can be marked as a favorite:
+
+- Click the **heart icon** on any artifact card to toggle its favorite status.
+- Favorites are synchronized between your session history and the Library, so an artifact you heart mid-session will appear as favorited when you later find it in the Library.
+- Filter the Library to favorites-only by clicking the **heart filter** in the Library toolbar.
+
+Favorites are useful for pinning the handful of designs you actively reference most often across multiple work sessions.
+
+## Data persistence
+
+<Warning>
+  Library data is stored in your **browser's localStorage** under the keys `alchemy_artifacts` and `alchemy_folders`. This means:
+
+  - Your Library **persists across browser sessions** on the same device and browser profile.
+  - It is **local to your device** — it does not sync to other devices or browsers.
+  - **Clearing your browser's site data, cache, or localStorage will permanently erase your entire Library** with no recovery path.
+
+  For any artifact you consider valuable, always [export it as a ZIP](/features/export) and save it to your file system or cloud storage. The ZIP is your durable, portable record. Do not rely on localStorage as your only backup.
+</Warning>
+
+To protect your Library on a shared machine, consider exporting important artifacts immediately after saving them. See [Organizing Your Work](/guides/organizing-work) for a recommended workflow that combines Library folders with regular ZIP exports.

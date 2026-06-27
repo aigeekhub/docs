@@ -1,0 +1,74 @@
+---
+title: "Iterate and Refine UI Designs with Base DNA"
+sidebarTitle: "Iterating Designs"
+description: "Learn how to use Ai Studio's Base DNA system to progressively refine a UI design through multiple revision rounds using natural language instructions."
+---
+
+A single generation gives you three strong starting points — but the real power of Ai Studio emerges when you iterate. Rather than re-prompting from scratch every time you want a change, the **Base DNA** system lets you lock in a design you like and layer natural-language revisions on top of it. Each round produces three new variants that all trace their lineage back to your chosen base, giving you controlled evolution without losing what made the original work. This guide walks you through the full iteration loop.
+
+<Steps>
+  <Step title="Generate initial variants">
+    Begin as you normally would: open the prompt input with **COMMAND ACCESS**, type a detailed prompt describing the UI you need, and press **Enter** or click **EXECUTE**. Wait for all three artifact cards to finish generating and review each one carefully before moving on.
+  </Step>
+
+  <Step title="Pick your best starting point">
+    Click the card that comes closest to what you're envisioning — even if it isn't perfect — to expand it into full-screen focus. Evaluate it with a critical eye: consider layout structure, colour choices, typography, and component hierarchy. This artifact is about to become your **Base**, so choose the one with the strongest foundation rather than the most attractive surface.
+  </Step>
+
+  <Step title="Set Base DNA">
+    With your preferred artifact focused, click the **DNA_v7** button in the header. A **DNA_BASE: [style name]** indicator will appear in the interface, confirming the selection. At the same moment, the prompt input bar switches from generation mode to **revision mode** — indicated by updated placeholder text and input styling. Your base is now locked in.
+  </Step>
+
+  <Step title="Write a revision prompt">
+    Describe the specific change you want to make to the base design. Good revision prompts are direct and targeted. For example:
+
+    - `Increase contrast on the CTA button and make it 20% larger`
+    - `Add a dark mode toggle in the top-right corner`
+    - `Replace the left sidebar navigation with a horizontal top nav bar`
+    - `Switch the font family to something more editorial and serif`
+
+    You can request visual changes, structural reorganisation, content updates, or accessibility improvements — anything you'd describe to a human designer.
+  </Step>
+
+  <Step title="Review three revision approaches">
+    Press **Enter** or click **EXECUTE** to generate. Ai Studio will produce three new variants, each applying your revision instruction at a different intensity level:
+
+    | Variant | DNA Retained | What it does |
+    |---|---|---|
+    | **Refine** | ~95% | Makes the requested change with surgical precision, leaving everything else intact |
+    | **Reimagine** | ~70% | Applies the change while also reskinning the visual language more boldly |
+    | **Restructure** | ~50% | Reorganises the layout and structure while honouring the spirit of the revision |
+
+    Compare all three before making your next move.
+  </Step>
+
+  <Step title="Set the best revision as your new Base">
+    Found a revision you prefer? Click it to focus it, then click **DNA_v7** again to promote it to your new Base DNA. The indicator will update to reflect the new style name. If none of the revisions improved things, click **UNDO/BACK** to revert to your previous base and try a different instruction.
+  </Step>
+
+  <Step title="Repeat until satisfied">
+    Chain as many revision rounds as you need. Each round is automatically saved to your session history, so you can always trace back through your decisions. There's no limit to the number of iterations — keep refining until the design meets your standard.
+  </Step>
+
+  <Step title="Export the final result">
+    When you're happy with the outcome, click **Download** in the header to export your artifact as a ZIP file containing the full HTML, a screenshot, a README, and a `prompt.json` recording every instruction in the chain.
+  </Step>
+</Steps>
+
+## Tips for effective iteration
+
+Getting the most from Base DNA comes down to how you frame your revision prompts and which variant type you choose. Keep the following in mind as you work:
+
+- **Match the variant to the size of the change.** Use **Refine** for targeted micro-adjustments (spacing, colour, copy), **Reimagine** when you want the design to feel visually different while keeping the same structure, and **Restructure** when the layout itself needs to change.
+
+- **Be specific and measurable.** Vague instructions produce vague results. `"make the header 20% larger and switch the background to a deep navy"` will outperform `"improve the header"` every time. Reference element names, sizes, colours, and positions wherever possible.
+
+- **Use UNDO/BACK freely.** If a revision pulls the design in the wrong direction, don't try to correct it with another revision — that compounds drift. Instead, hit **UNDO/BACK** to restore your last Base and try rephrasing your instruction.
+
+- **Iterate structure before style.** It's generally more efficient to get the layout right first (component positions, hierarchy, navigation patterns) and then refine the visual polish in later rounds.
+
+- **Save promising branches.** Before a risky revision, use **VAULT_PUSH** to save the current artifact to your Library. That way you can always return to it even if the next several rounds don't pan out.
+
+<Note>
+  All revision sessions are automatically preserved in your session history (up to 50 sessions). You can return to any point in your iteration history at any time. Learn more about how sessions are structured in the [Sessions concept guide](/concepts/sessions).
+</Note>

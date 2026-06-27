@@ -1,0 +1,119 @@
+---
+title: "Fix Common Ai Studio Issues: Blank Screens and Errors"
+sidebarTitle: "Common Issues"
+description: "Solutions to the most common problems in Ai Studio, including blank generation, clipboard issues, missing screenshots, and LocalStorage errors."
+---
+
+Even the smoothest AI-powered tools hit the occasional snag. This page covers the most frequent issues you might encounter while using Ai Studio and walks you through exactly how to fix each one — no guesswork required.
+
+<AccordionGroup>
+
+  <Accordion title="The app loads but nothing generates">
+    **Cause:** The `GEMINI_API_KEY` environment variable is missing, misspelled, or set to an invalid value. Ai Studio validates this key before making any API call and throws a hard stop if it isn't found — meaning the generation pipeline never starts.
+
+    **How to fix it:**
+
+    1. Open your project's `.env.local` file (create it in the root directory if it doesn't exist).
+    2. Make sure the following line is present and correct:
+       ```
+       GEMINI_API_KEY=your_actual_key_here
+       ```
+    3. **Restart your development server** after saving the file — environment variables are only read at startup and changes won't take effect until you do.
+    4. Verify your key is active and valid by visiting [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey).
+
+    <Tip>
+      The variable name must be exactly `GEMINI_API_KEY` — all caps, no spaces. A typo like `GEMINI_API_Key` or `GEMINI_APIKEY` will cause the same blank-generation symptom.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="Artifacts show an error message in red">
+    **Cause:** One or more of the three generation requests failed. This can happen for several reasons: the Gemini API returned an error, your quota was exhausted, or a transient network issue interrupted the request mid-flight. When this occurs, the affected artifact card displays red error text inside its iframe instead of a rendered UI.
+
+    **How to fix it:**
+
+    1. **Click the retry button** directly on the errored artifact card — this re-fires just that generation request without starting over from scratch.
+    2. Check the **notification toast** that appeared at the time of the error. It will contain a specific message (e.g., `API Quota Exceeded` or a network error) that tells you what actually went wrong.
+    3. If the error message mentions quota or rate limits, wait a few minutes before retrying — see [API Errors](/troubleshooting/api-errors) for details on managing limits.
+    4. If the error persists across multiple retries, try refreshing the page and regenerating from your prompt.
+  </Accordion>
+
+  <Accordion title="Copy to clipboard doesn't work">
+    **Cause:** The browser's Clipboard API requires a **secure context** — meaning the page must be served over `https://` or from `localhost`. If you've opened the app directly as a local file (a `file://` URL) or are running it on a non-HTTPS remote host, the Clipboard API will be blocked by the browser.
+
+    **How to fix it:**
+
+    1. Make sure you're running the app via your local development server (e.g., `npm run dev`) and accessing it at `http://localhost:3000` or similar — **not** by double-clicking an HTML file.
+    2. Ai Studio includes a fallback using `document.execCommand('copy')` for environments where the Clipboard API isn't available, but some modern browsers restrict even this fallback in non-secure contexts.
+    3. If you're hosting Ai Studio remotely, ensure the deployment uses HTTPS.
+
+    <Note>
+      Running on `localhost` always counts as a secure context, even without HTTPS. This is the easiest way to ensure full clipboard support during local development.
+    </Note>
+  </Accordion>
+
+  <Accordion title="The downloaded ZIP has no screenshot">
+    **Cause:** Ai Studio uses `html2canvas` to capture a screenshot of the rendered artifact iframe before bundling the export. This can fail silently when the rendered UI contains complex CSS (e.g., advanced gradients, blend modes, or custom fonts) or when the iframe is in a sandboxed state that restricts canvas access. When `html2canvas` throws, the error is caught internally and the export continues without the screenshot.
+
+    **How to fix it:**
+
+    - You don't need to do anything — your ZIP still contains everything you need:
+      - `index.html` — the full rendered UI code
+      - `README.md` — artifact metadata and prompt summary
+      - `prompt.json` — the structured prompt data for re-use
+    - The screenshot (`preview.png`) is a **convenience file only** and is not required for any core workflow.
+    - If you specifically need a screenshot, use your browser's built-in screenshot tool or a dedicated capture extension after opening the artifact's HTML file locally.
+    - To test whether the issue is artifact-specific, try exporting a simpler artifact — if the screenshot appears there, the problem is isolated to the complex UI's rendering.
+  </Accordion>
+
+  <Accordion title="My session history is empty after reopening the browser">
+    **Cause:** Ai Studio persists your session history using the browser's `localStorage`. If `localStorage` was cleared (manually, by a browser cleanup tool, or by your OS), or if the app was running in a **private/incognito window** (where `localStorage` is wiped on close), all session data will be gone on your next visit.
+
+    **How to fix it:**
+
+    - Unfortunately, once `localStorage` is cleared, session history cannot be recovered from the app alone.
+    - **Going forward**, protect your work by exporting important artifacts as ZIP files immediately after generation — these live on your filesystem and are permanent.
+    - Avoid using incognito/private mode if you want your session history to persist between browser sessions.
+    - If your browser's privacy settings are automatically clearing site data, add an exception for your Ai Studio URL (usually `localhost:3000`).
+
+    <Warning>
+      Ai Studio does not currently sync session history to the cloud. Local `localStorage` is the only persistence layer, making regular ZIP exports your best backup strategy.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="The boot sequence never finishes">
+    **Cause:** Ai Studio runs an animated boot/initialization sequence on startup. If a JavaScript error occurs during this phase, the sequence can stall indefinitely rather than completing and showing the main interface.
+
+    **How to fix it:**
+
+    1. Open your browser's **DevTools** (`F12` or `Cmd+Option+I` on Mac) and switch to the **Console** tab.
+    2. Look for any red error messages — these will tell you exactly what went wrong during initialization (e.g., a missing dependency, a module that failed to load, or a configuration error).
+    3. Try a **hard refresh** to bypass the browser cache:
+       - Windows/Linux: `Ctrl + Shift + R`
+       - Mac: `Cmd + Shift + R`
+    4. If the error persists, check that all dependencies are installed (`npm install`) and that your `.env.local` is correctly configured.
+    5. Clear your browser's site data for the app's origin if a cached bad state is suspected.
+  </Accordion>
+
+  <Accordion title="The SYSTEM FAULT LOG panel appeared">
+    **Cause:** Ai Studio includes a global runtime error monitor that catches unhandled JavaScript errors and promise rejections. When one of these is detected, a **System Fault Log** panel appears in the bottom-right corner of the interface, displaying the error message prefixed with `SYS_FAULT:` (for runtime errors) or `ASYNC_FAULT:` (for unhandled promise rejections).
+
+    **How to fix it:**
+
+    1. **Read the error message** in the panel — it often contains enough detail to understand what failed (e.g., a network call, a rendering step, or a storage operation).
+    2. Click **CLEAR** in the panel to dismiss it. This removes the log entry and closes the panel.
+    3. Most faults caught this way are **non-fatal** — the rest of the app continues to function normally after the panel is dismissed.
+    4. If the fault occurred during generation and one or more artifacts didn't render, use the **retry button** on those artifact cards to re-run just those requests.
+    5. For persistent or recurring faults, open DevTools and check the full stack trace in the Console for deeper diagnosis.
+
+    <Tip>
+      Seeing an `ASYNC_FAULT` doesn't necessarily mean something broke for you — it may be a background operation like a history save or an analytics call that failed harmlessly. Check whether your core workflow (generation, viewing, exporting) still works before troubleshooting further.
+    </Tip>
+  </Accordion>
+
+</AccordionGroup>
+
+---
+
+<Note>
+  If your issue is specifically related to Gemini API error codes, rate limits, quota exhaustion, or API key setup, see the dedicated **[API Errors](/troubleshooting/api-errors)** page for a full reference table and solutions.
+</Note>

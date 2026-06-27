@@ -1,0 +1,104 @@
+---
+title: "Gemini API Errors in Ai Studio: Causes and Fixes"
+sidebarTitle: "API Errors"
+description: "Understand and resolve Gemini API errors in Ai Studio, including rate limits, quota exhaustion, invalid keys, and model availability issues."
+---
+
+Ai Studio is powered by **Google's Gemini API**, which means its generation capabilities are subject to Google's rate limits, quota policies, and model availability. Understanding what each error message means — and how to respond to it — will save you a lot of debugging time. This page covers every API-related error you're likely to encounter, along with clear steps to resolve each one.
+
+<Tip>
+  Before diving into detailed diagnostics, always click the **retry button** on an errored artifact first. Many API errors are transient — a single retry is often all it takes.
+</Tip>
+
+## Error reference
+
+The table below maps the error messages and codes surfaced by Ai Studio to their root causes and the fastest path to a fix.
+
+| Error | Cause | Solution |
+|---|---|---|
+| `API Quota Exceeded` / `RESOURCE_EXHAUSTED` (HTTP 429) | You've hit the Gemini API rate limit for your key — too many requests in a short window, or your daily quota is exhausted. | Wait a few minutes and retry the errored artifact. If you're hitting this frequently, consider upgrading your Gemini API quota tier. See [Rate limits and quotas](#rate-limits-and-quotas) below. |
+| `GEMINI_API_KEY is not configured` | The `GEMINI_API_KEY` variable is missing from `.env.local`, misspelled, or the dev server hasn't been restarted since you added it. | Add `GEMINI_API_KEY=your_key` to `.env.local` in the project root, then **restart your dev server**. See [Getting a valid API key](#getting-a-valid-api-key) below. |
+| `Failed to parse styles, using fallbacks` | The style-name generation call returned a malformed or non-JSON response from the API, so the app couldn't extract the intended style labels. | This is **non-fatal**. The app automatically falls back to default style names and generation proceeds normally. No action is required on your part. |
+| Network error / fetch failed | Your machine has no internet connection, or the Gemini API itself is experiencing an outage. | Check your network connection first. If you're online, visit [https://status.google.com](https://status.google.com) to check for a Google-side outage, then retry once the service is restored. |
+
+---
+
+## Rate limits and quotas
+
+Every Gemini API key operates within Google's rate limit and daily quota system. On the **free tier**, you have a limited number of requests per minute (RPM) and requests per day (RPD) — and Ai Studio can consume several of these in a single generation.
+
+**How many requests does one generation use?**
+
+Each time you submit a prompt, Ai Studio fires the following requests in parallel:
+
+| Request | Purpose |
+|---|---|
+| Generation call × 3 | One for each of the three UI variants produced simultaneously |
+| Style name call × 1 | Generates human-readable names for the style variants |
+
+That's **4 API requests per generation**. If you're on the free tier and generating frequently, you can hit your per-minute limit quickly.
+
+**Tips for staying within your quota:**
+
+- Space out generation runs — wait 60 seconds between sessions if you're hitting 429 errors.
+- Use the [Variations](/features/variations) and [Revision](/features/revision) features on your existing artifacts rather than regenerating from scratch; this produces fewer parallel API calls.
+- If you need sustained, high-volume usage, upgrade to a paid Gemini API tier.
+
+For full quota details and pricing, see the official Google AI pricing page:
+[https://ai.google.dev/pricing](https://ai.google.dev/pricing)
+
+---
+
+## Getting a valid API key
+
+You need a valid Gemini API key configured in your project before Ai Studio can communicate with the Gemini API. Here's how to get one and set it up correctly:
+
+1. **Visit the API key management page:**
+   [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey)
+
+2. **Create a new API key.** If you already have a key, you can copy it from this page. If not, click **Create API key** and follow the prompts.
+
+3. **Add the key to your project.** In the root of your Ai Studio project, open (or create) a file named `.env.local` and add the following line:
+   ```
+   GEMINI_API_KEY=your_key_here
+   ```
+   Replace `your_key_here` with the actual key string you copied.
+
+4. **Restart your development server.** Environment variables are loaded at startup — changes to `.env.local` won't take effect until you stop and restart the server (`Ctrl+C`, then `npm run dev`).
+
+5. **Verify it works** by submitting a prompt. If the key is valid and active, generation will begin immediately.
+
+<Warning>
+  **Never commit your API key to version control.** Your `.env.local` file should be listed in `.gitignore` and must never be pushed to a public repository. If you accidentally expose a key, revoke it immediately at [https://aistudio.google.com/app/apikey](https://aistudio.google.com/app/apikey) and generate a new one.
+</Warning>
+
+---
+
+## Models used by Ai Studio
+
+Ai Studio uses two specific Gemini models, each assigned to a different task:
+
+| Model | Used for |
+|---|---|
+| `gemini-3-flash-preview` | UI generation from prompts, and revision of existing artifacts |
+| `gemini-2.5-flash` | Generating style variations on existing artifacts |
+
+These models are selected for their speed and output quality at their respective tasks. In rare cases, a model may become temporarily unavailable due to a Google-side update or outage.
+
+**If you suspect a model availability issue:**
+
+- Check the official list of currently available Gemini models:
+  [https://ai.google.dev/gemini-api/docs/models](https://ai.google.dev/gemini-api/docs/models)
+- Look for any model deprecation notices or status updates on the Google AI developer blog.
+- If a model listed above has been deprecated or renamed, the app may need an update to reference the replacement model identifier.
+
+---
+
+<CardGroup cols={2}>
+  <Card title="Common Issues" icon="wrench" href="/troubleshooting/common-issues">
+    Fix blank screens, clipboard failures, missing ZIP screenshots, and other non-API problems.
+  </Card>
+  <Card title="Exporting Artifacts" icon="download" href="/features/export">
+    Learn how the ZIP export works, what files it contains, and how to get the most out of it.
+  </Card>
+</CardGroup>

@@ -1,0 +1,79 @@
+---
+title: "UI Generation: Create Three Designs from One Prompt"
+sidebarTitle: "Generation"
+description: "Ai Studio generates three distinct HTML/CSS UI variants simultaneously from your text prompt using Google Gemini. Each variant streams live as it is created."
+---
+
+Ai Studio's core superpower is its ability to turn a single text prompt into three fully realized, high-fidelity HTML/CSS interfaces — all at once. Powered by Google Gemini, every generation run gives you a diverse set of design directions to explore, compare, and iterate on without writing a single line of code yourself.
+
+## How generation works
+
+Generation happens in two distinct steps, both handled automatically:
+
+<Steps>
+  <Step title="Gemini names three style directions">
+    Before any HTML is written, Gemini analyzes your prompt and synthesizes three creative style directions — each with a unique, evocative name like **"Cybernetic Neural Grid"** or **"Quantum Glass Interface"**. These names reflect distinct visual identities: different palettes, typographic moods, and materiality choices.
+  </Step>
+  <Step title="Three full HTML documents are generated in parallel">
+    Using those style names as anchors, Gemini generates three complete `<!DOCTYPE html>` documents simultaneously. Each one is a self-contained interface with inline CSS and no external dependencies. As generation runs, you watch the code materialize in real time via live streaming at 100 ms update intervals.
+  </Step>
+</Steps>
+
+This two-step process ensures that each of the three variants is genuinely differentiated — not just surface-level color swaps, but distinct interpretations of your prompt's intent.
+
+## Using the prompt input
+
+<Steps>
+  <Step title="Open the prompt bar">
+    Click **COMMAND ACCESS** in the application header. The prompt bar slides open and the cursor is focused automatically.
+  </Step>
+  <Step title="Type your prompt">
+    Describe the UI you want. Be specific about purpose, content, and any aesthetic preferences. For example: *"A dark-mode analytics dashboard for monitoring server health with CPU, memory, and network charts."*
+  </Step>
+  <Step title="Execute">
+    Press **Enter** or click the **EXECUTE** button to launch generation. Three artifact cards will appear immediately and begin streaming.
+  </Step>
+</Steps>
+
+<Note>
+  Pressing **Tab** while the prompt bar is focused will auto-fill the animated placeholder suggestion — a quick way to explore example prompts without typing from scratch.
+</Note>
+
+## The "Surprise Me" button
+
+The **Surprise Me** button (the dice icon in the prompt bar) executes whatever placeholder suggestion is currently displayed in the input field. It's a one-click way to generate a UI when you want inspiration rather than a specific outcome. A confetti animation fires on click to mark the moment. Use it to explore Ai Studio's range when you're just getting started.
+
+## Watching generation
+
+Once you press EXECUTE, three artifact cards populate the canvas:
+
+- **Loading state** — each card shows an animated skeleton while Gemini spins up its response for that variant.
+- **Live streaming** — as tokens arrive, the raw HTML code updates in real time inside the card. You can watch the document being written.
+- **Preview transition** — once enough valid HTML has accumulated, the card switches from a code view to a **live interactive iframe preview**. You can scroll, hover, and interact with the rendered UI before generation even finishes.
+
+All three variants stream in parallel, so you typically have all three previews available within seconds of each other.
+
+## Style names
+
+Gemini doesn't just generate anonymous variants — it names each one. Style names are short, creative phrases that capture the design philosophy of that variant. Examples you might see include:
+
+| Variant | Example style name |
+|---|---|
+| Variant A | Crystalline Data Lattice |
+| Variant B | Warm Brutalist Terminal |
+| Variant C | Soft Glass Command Center |
+
+These names appear on each artifact card and are embedded in the exported `prompt.json` metadata. They're useful for remembering which design direction a saved artifact came from when you return to your [Library](/features/library).
+
+## Retrying an artifact
+
+Not every generation will be a winner. If one of the three variants misses the mark — whether it's a visual misfire or a rendering error — you don't need to regenerate all three. Each artifact card has an individual **retry button**. Clicking it regenerates only that single variant from scratch using the same prompt and style name, leaving the other two cards untouched.
+
+This is especially useful when:
+- One card errored out mid-stream
+- One variant didn't reflect the intended design direction
+- You want to see another interpretation of a specific style name
+
+<Tip>
+  For the best generation results, write prompts that are specific about **materiality** — describe surfaces, lighting, density, and purpose. "A frosted-glass crypto portfolio tracker with neon accent colors and micro-animations" produces far more distinctive variants than "a dashboard." See [Prompting Guide](/concepts/prompting) for a full breakdown of effective prompt structure.
+</Tip>

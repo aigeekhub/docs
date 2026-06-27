@@ -1,0 +1,105 @@
+---
+title: "Base DNA: Iterative UI Refinement in Ai Studio"
+sidebarTitle: "Base DNA"
+description: "The Base DNA system lets you pin an artifact as a reference point and iteratively refine it. Learn how to set, use, and undo Base DNA states."
+---
+
+Base DNA is the mechanism that turns Ai Studio from a one-shot generator into a genuine design iteration tool. Instead of starting from scratch with every prompt, you **pin one artifact as your reference point** — your Base — and every subsequent prompt becomes a set of instructions for evolving that design. The result is a directed creative process where you converge on exactly the design you want through a series of focused refinements rather than hoping a single prompt nails it.
+
+---
+
+## Setting a Base
+
+You can set a Base DNA from two places in the UI:
+
+<Steps>
+  <Step title="Focus an artifact">
+    Click any artifact card to bring it into focus. The action bar appears at the bottom of the focused view.
+  </Step>
+  <Step title="Set the Base">
+    Use either entry point:
+    - Click the **DNA_v7** button in the top header bar — this pins the currently focused artifact as your Base.
+    - Click the **commit / Set as Base DNA** button in the artifact action bar.
+    
+    Both actions have the same effect: the artifact is registered as the active Base DNA.
+  </Step>
+  <Step title="Confirm in the header">
+    Once a Base is active, the header displays a **DNA_BASE** indicator showing the style name of the pinned artifact. This indicator is visible at all times so you always know which design is anchoring your current iteration track.
+  </Step>
+</Steps>
+
+<Note>
+  The Base DNA reference stores the session ID and artifact index of the pinned design. This means it points to the actual saved artifact in your session history — not just a copy — so the reference remains stable even if you navigate away and return.
+</Note>
+
+---
+
+## Revision mode
+
+Once a Base is active, the prompt input bar switches into **revision mode**. The visual treatment of the bar changes to signal this shift, and a label shows the name of your active Base.
+
+In revision mode, your prompt describes **changes to apply** to the Base rather than a new design to generate. Gemini receives the full HTML of your Base artifact alongside your revision prompt, and uses both to produce the three new variants.
+
+Good revision prompts are focused and directive:
+
+- `Make the primary button more prominent — increase size and use a stronger accent color`
+- `Add a persistent left sidebar with icon navigation`
+- `Tighten the spacing — this feels too airy, bring elements closer together`
+- `Switch the color palette to dark mode, keep the layout identical`
+
+See [Writing Effective Prompts](/concepts/prompting) for more examples of strong revision prompt patterns.
+
+---
+
+## Three revision approaches
+
+When you submit a revision prompt, Ai Studio doesn't generate three identical-intent variants. Instead, it produces three variants along a **fidelity spectrum** — each preserving a different amount of the Base DNA:
+
+<CardGroup cols={3}>
+  <Card title="Refine" icon="wand-sparkles">
+    **~95% DNA preserved**
+    
+    Minimal, surgical polish. Fixes the specific thing you asked about while leaving everything else untouched. Use this when the design is almost right and you want a precise tweak.
+  </Card>
+  <Card title="Reimagine" icon="palette">
+    **~70% DNA preserved**
+    
+    Bolder restyle with the same underlying structure and content. The layout skeleton, copy, and component hierarchy stay intact, but colors, typography, and surface treatment are rethought. Use this when you want a fresh look without restructuring.
+  </Card>
+  <Card title="Restructure" icon="table-columns">
+    **~50% DNA preserved**
+    
+    Reworked layout with the same content and intent. The information and components remain, but their arrangement, hierarchy, and flow are reconsidered. Use this when the current structure isn't working but you want to keep the content.
+  </Card>
+</CardGroup>
+
+All three variants use your revision prompt as direction, but they interpret it at different levels of fidelity to the Base. This gives you a range of options in a single generation step rather than having to re-prompt for each level of change.
+
+---
+
+## Undo
+
+Every time you set a new Base DNA, the previous Base is pushed onto a **history stack**. This means you can step backward through your iteration track if a revision went in the wrong direction.
+
+<Steps>
+  <Step title="Click UNDO / BACK">
+    The **UNDO/BACK** button appears in the header when a Base DNA is active. Clicking it pops the most recent Base off the history stack and restores the previous one.
+  </Step>
+  <Step title="Continue iterating from the restored Base">
+    Once you've stepped back, the prompt input returns to revision mode anchored to the restored Base. Your iteration track continues from that earlier point.
+  </Step>
+</Steps>
+
+You can step back through as many Base states as exist in the stack, letting you freely explore branches without fear of losing your progress. Think of it as version control for your design evolution.
+
+---
+
+## Clear Base
+
+To exit revision mode entirely and return to fresh-generation mode, clear the active Base DNA.
+
+Click the **CLEAR** button next to the **DNA_BASE** indicator in the header. This removes the active Base, empties the revision context, and returns the prompt input to standard mode. Your session history and all previously generated artifacts are unaffected — you're just releasing the reference point.
+
+<Tip>
+  Use the **Reimagine** variant (70% DNA preserved) when your design has solid structure and content but the visual style isn't landing. It's the most efficient way to explore a completely different aesthetic direction — new color story, new type treatment, new surface materiality — while keeping all the layout work you've already done intact.
+</Tip>
