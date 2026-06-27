@@ -42,7 +42,7 @@ Even the smoothest AI-powered tools hit the occasional snag. This page covers th
 
     **How to fix it:**
 
-    1. Make sure you're running the app via your local development server (e.g., `npm run dev`) and accessing it at `http://localhost:3000` or similar — **not** by double-clicking an HTML file.
+    1. Make sure you're running the app via your local development server (e.g., `npm run dev`) and accessing it at `http://localhost:5173` or similar — **not** by double-clicking an HTML file.
     2. Ai Studio includes a fallback using `document.execCommand('copy')` for environments where the Clipboard API isn't available, but some modern browsers restrict even this fallback in non-secure contexts.
     3. If you're hosting Ai Studio remotely, ensure the deployment uses HTTPS.
 
@@ -60,7 +60,7 @@ Even the smoothest AI-powered tools hit the occasional snag. This page covers th
       - `index.html` — the full rendered UI code
       - `README.md` — artifact metadata and prompt summary
       - `prompt.json` — the structured prompt data for re-use
-    - The screenshot (`preview.png`) is a **convenience file only** and is not required for any core workflow.
+    - The screenshot (`screenshot.png`) is a **convenience file only** and is not required for any core workflow.
     - If you specifically need a screenshot, use your browser's built-in screenshot tool or a dedicated capture extension after opening the artifact's HTML file locally.
     - To test whether the issue is artifact-specific, try exporting a simpler artifact — if the screenshot appears there, the problem is isolated to the complex UI's rendering.
   </Accordion>
@@ -73,7 +73,7 @@ Even the smoothest AI-powered tools hit the occasional snag. This page covers th
     - Unfortunately, once `localStorage` is cleared, session history cannot be recovered from the app alone.
     - **Going forward**, protect your work by exporting important artifacts as ZIP files immediately after generation — these live on your filesystem and are permanent.
     - Avoid using incognito/private mode if you want your session history to persist between browser sessions.
-    - If your browser's privacy settings are automatically clearing site data, add an exception for your Ai Studio URL (usually `localhost:3000`).
+    - If your browser's privacy settings are automatically clearing site data, add an exception for your Ai Studio URL (usually `localhost:5173`).
 
     <Warning>
       Ai Studio does not currently sync session history to the cloud. Local `localStorage` is the only persistence layer, making regular ZIP exports your best backup strategy.

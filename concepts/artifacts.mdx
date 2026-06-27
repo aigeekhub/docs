@@ -63,16 +63,16 @@ While an artifact is focused, the surrounding UI steps back so nothing competes 
 When an artifact is focused, a set of action controls becomes available in the action bar.
 
 <CardGroup cols={2}>
-  <Card title="Favorite" icon="heart">
+  <Card title="Favorite" icon="heart" href="/features/library">
     Press the heart icon to mark the artifact as a favorite. Favorited artifacts are flagged visually and can be filtered in the Library panel, making it easier to find your best designs across sessions.
   </Card>
-  <Card title="View Source" icon="code">
+  <Card title="View Source" icon="code" href="/features/export">
     Click the **SOURCE** button to open the code panel. This displays the raw HTML of the artifact — the complete, copy-pasteable document. See [Exporting Your Designs](/features/export) for full export options.
   </Card>
-  <Card title="Set as Base DNA" icon="dna">
+  <Card title="Set as Base DNA" icon="dna" href="/concepts/base-dna">
     Pin this artifact as your **Base DNA** — the reference design that all future revision prompts will build on. This is the entry point to iterative refinement. See [Base DNA](/concepts/base-dna) for the full workflow.
   </Card>
-  <Card title="Retry" icon="rotate-right">
+  <Card title="Retry" icon="rotate-right" href="/features/generation">
     Regenerate this specific artifact using the same prompt and the same style name. Use this when the initial generation produced an error, or when you want a fresh attempt at a variant you found unsatisfying without losing the other two.
   </Card>
 </CardGroup>
@@ -89,5 +89,5 @@ Every artifact Ai Studio generates is a **complete, standalone HTML document**. 
 - **Renderable anywhere** — drop the file in a browser, embed it in an iframe, or open it in a local `file://` context — it works in all three.
 
 <Note>
-  Artifacts are stored as part of their parent session in your browser's localStorage under the key `alchemy_artifacts`. Sessions are retained automatically (up to 50 sessions) so you can revisit and re-export any artifact from your recent history without having to regenerate it. See [Sessions and History](/concepts/sessions) for details on how persistence works.
+  Artifacts are saved as part of their parent session in your browser's local storage. Sessions are retained automatically (up to 50 sessions) so you can revisit and re-export any artifact from your recent history without having to regenerate it. See [Sessions and History](/concepts/sessions) for details on how persistence works.
 </Note>

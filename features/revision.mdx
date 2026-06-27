@@ -15,7 +15,7 @@ Before you can issue a revision prompt, you need to designate an artifact as the
     Click on the artifact card you want to revise. It should be the design that represents your current best result.
   </Step>
   <Step title="Set it as Base DNA">
-    Click **DNA_v7** in the application header. The selected artifact is now locked in as the Base DNA. The prompt bar updates to Revision Mode — the input field label changes to reflect that you're now issuing a revision instruction, not a fresh generation prompt.
+    Click **DNA_v7** in the application header to lock the focused artifact in as Base DNA. Alternatively, click the **commit** button in the action bar. Either way, the prompt bar updates to Revision Mode — the input field reflects that you're now issuing a revision instruction, not a fresh generation prompt.
   </Step>
 </Steps>
 
@@ -84,6 +84,8 @@ After your three revision variants generate:
 ## Undoing a revision
 
 If a revision run moves in the wrong direction, click the **UNDO / BACK** button in the header. This restores the previous Base DNA state, reverting the prompt bar to the last confirmed Base DNA artifact. Your session history retains all generated variants — you're not deleting anything, just rolling back the active Base DNA pointer.
+
+If you want to exit Revision Mode entirely rather than stepping back one level, click **CLEAR** in the header. This removes the Base DNA designation completely and returns the prompt bar to standard generation mode.
 
 <Tip>
   Chain revision rounds strategically for the best outcomes. A productive pattern is:

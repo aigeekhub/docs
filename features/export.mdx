@@ -27,26 +27,30 @@ The ZIP contains four files:
     - The **Inter** font loaded via Google Fonts
     - All CSS in a `<style>` block inside `<head>` — no separate stylesheet needed
     - All interactivity as inline `<script>` tags
+    - `body { margin: 0; padding: 0; }` set by default so the layout renders edge-to-edge
     - No external runtime dependencies
 
     Open it directly in any browser and it works immediately.
   </Accordion>
   <Accordion title="screenshot.png — high-resolution preview" icon="image">
-    A **1200×800 pixel** screenshot of the artifact captured at **1.5× device pixel ratio** using `html2canvas`. The resulting image is crisp and suitable for presentations, design documentation, portfolio entries, or sharing in a project brief.
+    A screenshot of the artifact captured at **1.5× device pixel ratio** from a **1200×800 pixel** container using `html2canvas` with cross-origin support enabled and a black background. The resulting image is crisp and suitable for presentations, design documentation, portfolio entries, or sharing in a project brief.
   </Accordion>
   <Accordion title="README.md — implementation guide" icon="book-open">
     A generated implementation guide that covers:
     - **Responsive design** — recommended breakpoints and how to adapt the layout for mobile
     - **Accessibility** — ARIA considerations, color contrast notes, keyboard navigation
-    - **Framework integration** — guidance on converting the HTML/CSS into React, Vue, or Angular components
+    - **Performance** — guidance on minimizing heavy animations for low-end devices
+    - **Integration** — converting the HTML/CSS into React, Vue, or Angular components
+    - **Theming** — using CSS variables to make switching themes easier
 
     The README is written specifically for your artifact's structure, not a generic template.
   </Accordion>
   <Accordion title="prompt.json — generation metadata" icon="braces">
     A JSON file containing:
-    - The original generation prompt
-    - The style name Gemini assigned to this variant (e.g., `"Crystalline Data Lattice"`)
-    - The generation timestamp
+    - `originalPrompt` — the text prompt used to generate this artifact
+    - `styleName` — the style name Gemini assigned to this variant (e.g., `"Crystalline Data Lattice"`)
+    - `generatedAt` — the generation timestamp in ISO format
+    - `engine` — always `"UI/UX FLASH BY BOO"`
 
     This metadata is useful for reproducing or referencing the generation later, and for documentation purposes in larger design systems.
   </Accordion>
@@ -61,10 +65,10 @@ If you only need the HTML — no screenshot, no README — use the **Copy** opti
     Click the artifact card you want to copy.
   </Step>
   <Step title="Open the Source panel">
-    Click **SOURCE** in the header, or click the code icon on the artifact card. The Source panel opens showing the full HTML document.
+    Click **SOURCE** in the focused artifact's header controls. The Source panel opens showing the full HTML document.
   </Step>
   <Step title="Copy">
-    Click **Copy** in the Source panel header. The entire HTML document is copied to your clipboard. A checkmark icon briefly replaces the copy icon to confirm the action succeeded.
+    Click **Copy** in the Source panel header. The entire HTML document is copied to your clipboard. A checkmark icon replaces the copy icon for two seconds to confirm the action succeeded.
   </Step>
 </Steps>
 

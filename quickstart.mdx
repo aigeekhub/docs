@@ -1,5 +1,5 @@
 ---
-title: "Get Started with Ai Studio in Minutes"
+title: "Quickstart: Generate and Export Your First UI Design"
 sidebarTitle: "Quickstart"
 description: "Generate your first AI-designed UI component with Ai Studio. Set up your API key, enter a prompt, and export production-ready HTML in under 5 minutes."
 ---
@@ -26,12 +26,12 @@ Ai Studio is designed to get you from zero to a working, exportable UI in a sing
     Clone the Ai Studio repository and install its dependencies:
 
     ```bash
-    git clone https://github.com/your-org/ai-studio.git
-    cd ai-studio
+    git clone https://github.com/aigeekhub/quantum-design.git
+    cd quantum-design
     npm install
     ```
 
-    The install step pulls in all required packages including the Google Generative AI SDK and the Vite dev server.
+    The install step pulls in all required packages including the `@google/genai` SDK and the Vite dev server.
   </Step>
 
   <Step title="Add Your API Key">
@@ -55,7 +55,7 @@ Ai Studio is designed to get you from zero to a working, exportable UI in a sing
     Open your browser and navigate to:
 
     ```
-    http://localhost:5173
+    http://localhost:3000
     ```
 
     You should see the **ARTIFACT_OS** interface load with the Ai Studio shell. If the app displays an API key error instead, double-check that `.env.local` exists and that the key is correct — see [Setup](/setup) for troubleshooting steps.

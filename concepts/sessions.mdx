@@ -30,7 +30,7 @@ A session is the fundamental unit of work in Ai Studio. It packages everything t
 
 ## Session history
 
-Ai Studio automatically saves every session to your browser's localStorage. You don't need to click Save — as soon as a session's artifacts finish generating, it's recorded.
+Ai Studio automatically saves every session to your browser's local storage. You don't need to click Save — as soon as a session's artifacts finish generating, it's recorded.
 
 <Steps>
   <Step title="Open the NAV ACCESS sidebar">
@@ -40,7 +40,7 @@ Ai Studio automatically saves every session to your browser's localStorage. You 
     Select the **HISTORY** panel within the sidebar. This lists all your saved sessions in reverse-chronological order, showing the prompt text and a thumbnail of the selected artifact for each session.
   </Step>
   <Step title="Click any session to jump to it">
-    Clicking a session in the history list loads it into the main canvas. All three artifacts are restored from localStorage exactly as they were when the session was saved.
+    Clicking a session in the history list loads it into the main canvas. All three artifacts are restored from your browser's local storage exactly as they were when the session was saved.
   </Step>
 </Steps>
 
@@ -61,26 +61,22 @@ You can also navigate the revision chain of a specific design:
 
 ## Data persistence
 
-Ai Studio stores all session data locally in your browser using three `localStorage` keys:
-
-| Key | Contents |
-|---|---|
-| `alchemy_history` | All session records — prompts, metadata, artifact references (up to 50 sessions) |
-| `alchemy_artifacts` | The actual artifact HTML for all saved artifacts |
-| `alchemy_folders` | Library folder structure for organized collections |
-
-Because everything is stored locally, your design work is **entirely private by default** — nothing is sent to a server or associated with an account. Your history is available immediately on every visit without any sign-in.
+Ai Studio stores all session data locally in your browser. Because everything is stored locally, your design work is **entirely private by default** — nothing is sent to a server or associated with an account. Your history is available immediately on every visit without any sign-in.
 
 The trade-off is that your data lives in the browser where it was created. If you switch browsers, use a private/incognito window, or clear your browser data, your session history will not be available.
+
+<Tip>
+  Power users who want to inspect or back up their data can find session records in their browser's local storage. Ai Studio stores session history under the key `alchemy_history` — you can view or export this data using your browser's developer tools (Application → Local Storage).
+</Tip>
 
 ---
 
 ## Session limits
 
-Ai Studio retains a maximum of **50 sessions** in history. When you exceed this limit, the oldest session is automatically removed to make room for the new one. This keeps localStorage usage predictable and prevents the app from slowing down over time.
+Ai Studio retains a maximum of **50 sessions** in history. When you exceed this limit, the oldest session is automatically removed to make room for the new one. This keeps local storage usage predictable and prevents the app from slowing down over time.
 
 <Accordion title="What gets deleted when a session is removed?">
-  When the oldest session is pruned, both the session record in `alchemy_history` and the associated artifact HTML in `alchemy_artifacts` are removed. If you had a Base DNA reference pointing to an artifact in the deleted session, that reference will no longer resolve. To avoid this, save important artifacts to the Library before they age out of the 50-session window.
+  When the oldest session is pruned, its session record and all associated artifact HTML are removed from your browser's local storage. If you had a Base DNA reference pointing to an artifact in the deleted session, that reference will no longer resolve. To avoid this, save important artifacts to the Library before they age out of the 50-session window.
 </Accordion>
 
 To preserve a design permanently — beyond the 50-session rolling window — add it to the **Library**. Library items are stored separately from the session history and are never automatically deleted. See [Organizing Your Work](/guides/organizing-work) for how to use the Library and folder system.
